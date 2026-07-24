@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'screens/lista_screen.dart';
+import 'screens/preferiti_screen.dart';
+import 'screens/storico_screen.dart';
+import 'screens/budget_screen.dart';
+import 'screens/statistiche_screen.dart';
+import 'screens/impostazioni_screen.dart';
 
 
 void main() {
-
   runApp(const SpesaGO());
-
 }
-
 
 
 class SpesaGO extends StatelessWidget {
@@ -26,7 +29,8 @@ class SpesaGO extends StatelessWidget {
 
       theme: ThemeData(
 
-        colorScheme: ColorScheme.fromSeed(
+        colorScheme:
+        ColorScheme.fromSeed(
           seedColor: Colors.green,
         ),
 
@@ -56,74 +60,104 @@ class HomePage extends StatelessWidget {
 
       appBar: AppBar(
 
-        title: const Text(
-          "🛒 SpesaGO",
-        ),
+        title:
+        const Text("🛒 SpesaGO"),
 
       ),
 
 
-      body: Center(
+      body: ListView(
 
-        child: Column(
-
-          mainAxisAlignment:
-          MainAxisAlignment.center,
+        padding:
+        const EdgeInsets.all(20),
 
 
-          children: [
+        children: [
 
 
-            const Text(
+          voceMenu(
+            context,
+            "🛒 Nuova spesa",
+            const ListaScreen(),
+          ),
 
-              "Benvenuto in SpesaGO",
 
-              style: TextStyle(
+          voceMenu(
+            context,
+            "⭐ Preferiti",
+            const PreferitiScreen(),
+          ),
 
-                fontSize: 24,
 
-                fontWeight: FontWeight.bold,
+          voceMenu(
+            context,
+            "📋 Storico",
+            const StoricoScreen(),
+          ),
 
-              ),
+
+          voceMenu(
+            context,
+            "🎯 Budget",
+            const BudgetScreen(),
+          ),
+
+
+          voceMenu(
+            context,
+            "📊 Statistiche",
+            const StatisticheScreen(),
+          ),
+
+
+          voceMenu(
+            context,
+            "⚙️ Impostazioni",
+            const ImpostazioniScreen(),
+          ),
+
+        ],
+
+      ),
+
+    );
+
+  }
+
+
+
+  Widget voceMenu(
+      BuildContext context,
+      String testo,
+      Widget pagina,
+      ){
+
+    return Padding(
+
+      padding:
+      const EdgeInsets.only(bottom:12),
+
+
+      child: ElevatedButton(
+
+        onPressed: (){
+
+          Navigator.push(
+
+            context,
+
+            MaterialPageRoute(
+
+              builder: (_) => pagina,
 
             ),
 
+          );
 
-            const SizedBox(height: 30),
+        },
 
-
-            ElevatedButton(
-
-              onPressed: () {
-
-                Navigator.push(
-
-                  context,
-
-                  MaterialPageRoute(
-
-                    builder: (_) =>
-                    const ListaScreen(),
-
-                  ),
-
-                );
-
-              },
-
-
-              child: const Text(
-
-                "🛒 Nuova spesa",
-
-              ),
-
-            ),
-
-
-          ],
-
-        ),
+        child:
+        Text(testo),
 
       ),
 
