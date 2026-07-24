@@ -1,31 +1,53 @@
 import 'package:flutter/material.dart';
+import 'screens/lista_screen.dart';
+
 
 void main() {
+
   runApp(const SpesaGO());
+
 }
 
+
+
 class SpesaGO extends StatelessWidget {
+
   const SpesaGO({super.key});
+
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
-      title: 'SpesaGO',
+
+      title: "SpesaGO",
+
       theme: ThemeData(
+
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.green,
         ),
+
         useMaterial3: true,
+
       ),
+
       home: const HomePage(),
+
     );
+
   }
+
 }
 
 
+
 class HomePage extends StatelessWidget {
+
   const HomePage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,36 +55,80 @@ class HomePage extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        title: const Text("🛒 SpesaGO"),
+
+        title: const Text(
+          "🛒 SpesaGO",
+        ),
+
       ),
 
+
       body: Center(
+
         child: Column(
 
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment:
+          MainAxisAlignment.center,
+
 
           children: [
 
+
             const Text(
+
               "Benvenuto in SpesaGO",
+
               style: TextStyle(
+
                 fontSize: 24,
+
                 fontWeight: FontWeight.bold,
+
               ),
+
             ),
 
-            const SizedBox(height: 20),
+
+            const SizedBox(height: 30),
+
 
             ElevatedButton(
-              onPressed: () {},
+
+              onPressed: () {
+
+                Navigator.push(
+
+                  context,
+
+                  MaterialPageRoute(
+
+                    builder: (_) =>
+                    const ListaScreen(),
+
+                  ),
+
+                );
+
+              },
+
+
               child: const Text(
-                "Nuova spesa",
+
+                "🛒 Nuova spesa",
+
               ),
+
             ),
 
+
           ],
+
         ),
+
       ),
+
     );
+
   }
+
 }
